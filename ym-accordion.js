@@ -25,8 +25,8 @@ class YMAccordion {
 		this.content = el.querySelector( 'div' );
 
 		this.animation   = null;
-		this.isClosing   = false;
 		this.isExpanding = false;
+		this.isClosing   = false;
 
 		this.summary.addEventListener( 'click', e => this.#onClick( e ) );
 	}
@@ -36,10 +36,10 @@ class YMAccordion {
 
 		this.el.style.overflow = 'hidden';
 
-		if ( this.isClosing || !this.el.open ) {
+		if ( !this.el.open || this.isClosing ) {
 			this.#open();
-		} else if ( this.isExpanding || this.el.open ) {
-			this.#shrink();
+		} else if ( this.el.open || this.isExpanding ) {
+			this.#close();
 		}
 	}
 
@@ -50,7 +50,7 @@ class YMAccordion {
 		window.requestAnimationFrame( () => this.#expand() );
 	}
   
-	#shrink () {
+	#close () {
 		this.isClosing = true;
 
 		const startHeight = `${this.el.offsetHeight}px`;
@@ -94,9 +94,11 @@ class YMAccordion {
   
 	#onAnimationFinish ( isOpen ) {
 		this.el.open         = isOpen;
-		this.animation       = null;
-		this.isClosing       = false;
-		this.isExpanding     = false;
 		this.el.style.height = this.el.style.overflow = '';
+
+		this.animation = null;
+
+		this.isClosing   = false;
+		this.isExpanding = false;
 	}
 }
