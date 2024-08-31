@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * A class that adds animation when revealing information inside <details> tags.
  */
@@ -7,8 +5,10 @@ class YMAccordion {
 	/**
 	 * Sets the animation for an element.
 	 * 
-	 * @param {Element} el   Details tag HTML element.
-	 * @param {object}  args Additional options.
+	 * @param {Element} el            Details tag HTML element.
+	 * @param {object}  args          Additional options.
+	 * @param {number}  args.duration Animation duration in ms. Default 200.
+	 * @param {string}  args.easing   Animation timing function. Default 'ease-in-out'.
 	 */
 	constructor ( el, args = {} ) {
 		args = {
