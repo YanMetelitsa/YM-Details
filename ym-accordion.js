@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * A class that adds animation when revealing information inside <details> tags.
  */
