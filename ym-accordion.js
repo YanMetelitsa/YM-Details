@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * A class that adds animation when revealing information inside <details> tags.
+ * Class that adds animation when revealing information inside <details> tags.
  */
 class YMAccordion {
 	/**
@@ -104,3 +104,9 @@ class YMAccordion {
 		this.isExpanding = false;
 	}
 }
+
+window.addEventListener( 'load', e => {
+	document.querySelectorAll( 'details' ).forEach( el => {
+		new YMAccordion( el );
+	});
+});
