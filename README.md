@@ -1,4 +1,4 @@
-# Easy <details> tags toggle animation with YMDetails
+# Easy \<details> tags toggle animation with YMDetails
 
 Text
  
