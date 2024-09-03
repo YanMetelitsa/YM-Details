@@ -1,7 +1,7 @@
 # Easy \<details> toggle animation with YMDetails
 
 1. Download YMDetails class code.
-1. Insert into your app.
+1. Insert it into your app.
 1. Init using code below:
  
 ```js
