@@ -3,7 +3,7 @@
 /**
  * Class that adds animation when revealing information inside <details> tags.
  */
-class YMAccordion {
+class YMDetails {
 	/**
 	 * Sets the animation for an element.
 	 * 
@@ -107,6 +107,6 @@ class YMAccordion {
 
 window.addEventListener( 'load', e => {
 	document.querySelectorAll( 'details' ).forEach( el => {
-		new YMAccordion( el );
+		new YMDetails( el );
 	});
 });
