@@ -1,6 +1,8 @@
-# Easy \<details> tags toggle animation with YMDetails
+# Easy \<details> toggle animation with YMDetails
 
-Text
+1. Download YMDetails class code.
+1. Insert into your app.
+1. Init using code below:
  
 ```js
 window.addEventListener( 'load', e => {
