@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Class that adds animation when revealing information inside <details> tags.
+ * Adds animation when revealing information inside <details> tags.
  */
 class YMDetails {
 	/**
@@ -51,6 +51,27 @@ class YMDetails {
 
 		window.requestAnimationFrame( () => this.#expand() );
 	}
+
+	#expand () {
+		this.isExpanding = true;
+
+		const startHeight = `${this.el.offsetHeight}px`;
+		const endHeight   = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+
+		if ( this.animation ) {
+			this.animation.cancel();
+		}
+
+		this.animation = this.el.animate({
+			height: [ startHeight, endHeight ],
+		}, {
+			duration: this.args.duration,
+			easing: this.args.easing,
+		});
+
+		this.animation.onfinish = () => this.#onAnimationFinish( true );
+		this.animation.oncancel = () => this.isExpanding = false;
+	}
   
 	#close () {
 		this.isClosing = true;
@@ -71,27 +92,6 @@ class YMDetails {
 
 		this.animation.onfinish = () => this.#onAnimationFinish( false );
 		this.animation.oncancel = () => this.isClosing = false;
-	}
-  
-	#expand () {
-		this.isExpanding = true;
-
-		const startHeight = `${this.el.offsetHeight}px`;
-		const endHeight   = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
-
-		if ( this.animation ) {
-			this.animation.cancel();
-		}
-
-		this.animation = this.el.animate({
-			height: [ startHeight, endHeight ],
-		}, {
-			duration: this.args.duration,
-			easing: this.args.easing,
-		});
-
-		this.animation.onfinish = () => this.#onAnimationFinish( true );
-		this.animation.oncancel = () => this.isExpanding = false;
 	}
   
 	#onAnimationFinish ( isOpen ) {
